@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Joke Generator</title>
+</head>
+<body>
+<h1>Programming Joke Generator</h1>
+<p>Select the type of joke you want to hear:</p>
+<select id="jokeType">
+    <option value="programming">Programming Joke</option>
+    <option value="coder">Coder Joke</option>
+    <option value="debugging">Debugging Joke</option>
+</select>
+<button id="getJokeButton">Get Joke</button>
+<p id="jokeDisplay"></p>
+
+<script>
+    const jokeTypeSelect = document.getElementById('jokeType');
+    const getJokeButton = document.getElementById('getJokeButton');
+    const jokeDisplay = document.getElementById('jokeDisplay');
+
+    getJokeButton.addEventListener('click', async () => {
+        const selectedType = jokeTypeSelect.value;
+        const response = await fetch(`/welcome?type=${selectedType}`);
+        const jokeText = await response.text();
+        jokeDisplay.textContent = jokeText;
+    });
+</script>
+</body>
+</html>
